@@ -1,11 +1,12 @@
 {
   "name": "future-datepicker",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Datepicker usign moment js",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "dev": "vue serve datepicker.vue",
+    "build": "bili --name index --plugin vue --vue.css false"
+   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DannyAndres/future-datepicker.git"
@@ -18,7 +19,7 @@
     "future"
   ],
   "author": "Danny Andres",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DannyAndres/future-datepicker/issues"
   },
