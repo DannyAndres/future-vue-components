@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import '@/index.js';
+import './index.js';
 import moment from 'moment';
 // eslint-disable-next-line
 require('moment/locale/es');

@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import '@/index.js';
+import './index.js';
 export default {
   props: {
     color: {
