@@ -23,6 +23,13 @@ _install moment, animate.css, tailwind_
 ```shell
 npm install --save future-vue-components
 ```
+_in case of error import css files from tailwind, try the complete route from where the @import is_
+_(main.scss file) => /src/assets/scss/main.scss_
+```scss
+ @import "./../../../node_modules/tailwindcss/dist/base.css";
+ @import "./../../../node_modules/tailwindcss/dist/components.css";
+ @import "./../../../node_modules/tailwindcss/dist/utilities.css";
+ ```
 
 ## Usage
 
