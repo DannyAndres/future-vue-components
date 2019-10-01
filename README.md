@@ -78,7 +78,7 @@ export default {
 ## Development
 
 ```sh
-npm
+npm install
 npm run Datepicker
 # open localhost:8080
 ```
