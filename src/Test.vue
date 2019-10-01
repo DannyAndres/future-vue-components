@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import '@/index.js';
+import './index.js';
 import datepicker from './Datepicker.vue';
 import moment from 'moment';
 // eslint-disable-next-line

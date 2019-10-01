@@ -1,7 +1,7 @@
 import Datepicker from "./Datepicker.vue";
 
 // Main Scss File
-import '@/assets/scss/main.scss';
+import './assets/scss/main.scss';
 
 // Animations
 import 'animate.css';
