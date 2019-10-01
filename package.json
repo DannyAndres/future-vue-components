@@ -1,16 +1,17 @@
 {
   "private": false,
-  "name": "future-components",
-  "version": "0.0.1",
+  "name": "future-vue-components",
+  "version": "0.0.2",
   "description": "Good looking components for vue js",
   "main": "./dist/index.js",
   "scripts": {
-    "serve": "vue serve src/Datepicker.vue",
-    "build": "bili --name index --plugin vue --vue.css false"
+    "Datepicker": "vue serve src/Datepicker.vue",
+    "Test": "vue serve src/Test.vue",
+    "build": "npx bili --bundle-node-modules"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DannyAndres/future-datepicker.git"
+    "url": "git+https://github.com/DannyAndres/future-vue-components.git"
   },
   "keywords": [
     "components",
@@ -26,12 +27,18 @@
   "author": "Danny Andres",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DannyAndres/future-datepicker/issues"
+    "url": "https://github.com/DannyAndres/future-vue-components/issues"
   },
-  "homepage": "https://github.com/DannyAndres/future-datepicker#readme",
+  "homepage": "https://github.com/DannyAndres/future-vue-components#readme",
   "devDependencies": {
     "bili": "^4.8.1",
     "rollup-plugin-vue": "^5.0.1",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "sass-loader": "^7.1.0"
+  },
+  "dependencies": {
+    "animate.css": "^3.7.2",
+    "moment": "^2.24.0",
+    "tailwindcss": "^1.1.2"
   }
 }
