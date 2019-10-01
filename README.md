@@ -10,7 +10,7 @@
     <img src="./images/back.png" width="200" alt="Future Components">
   </div>
   <br>
-  <img src="./images/video.gif" width="400" alt="Future Components">
+  <img src="./images/video.gif" width="1000" alt="Future Components">
   <br>
   <h1>Future Datepicker</h1>
   <p>👌🏻 Simple, futuristic design for components with no effort</p>
