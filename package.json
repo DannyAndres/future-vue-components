@@ -1,27 +1,37 @@
 {
-  "name": "future-datepicker",
+  "private": false,
+  "name": "future-components",
   "version": "0.0.1",
-  "description": "Datepicker usign moment js",
+  "description": "Good looking components for vue js",
   "main": "./dist/index.js",
   "scripts": {
-    "dev": "vue serve datepicker.vue",
+    "serve": "vue serve src/Datepicker.vue",
     "build": "bili --name index --plugin vue --vue.css false"
-   },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DannyAndres/future-datepicker.git"
   },
   "keywords": [
-    "date",
+    "components",
+    "future",
     "datepicker",
-    "time",
-    "datetimepicker",
-    "future"
+    "modal",
+    "vue",
+    "js"
+  ],
+  "files": [
+    "dist/*"
   ],
   "author": "Danny Andres",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DannyAndres/future-datepicker/issues"
   },
-  "homepage": "https://github.com/DannyAndres/future-datepicker#readme"
+  "homepage": "https://github.com/DannyAndres/future-datepicker#readme",
+  "devDependencies": {
+    "bili": "^4.8.1",
+    "rollup-plugin-vue": "^5.0.1",
+    "vue-template-compiler": "^2.6.10"
+  }
 }
