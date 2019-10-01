@@ -19,7 +19,7 @@
 </div>
 
 ## Installation
-
+_install moment, animate.css, tailwind_
 ```shell
 npm install --save future-vue-components
 ```
