@@ -5,7 +5,7 @@
 ---
 
 <div align="center">
-  <img src="./iamges/front.png" width="500" alt="Future Components">
+  <img src="./images/front.png" width="500" alt="Future Components">
   <br>
   <h1>Future Datepicker</h1>
   <p>👌🏻 Simple, futuristic design for components with no effort</p>
@@ -33,11 +33,34 @@ Vue.use(Datepicker)
 _vue template_
 
 ```html
+<input
+  @click="datepicker = true"
+  type="text"
+  placeholder="date"
+  autocomplete="off"
+  spellcheck="false"
+  readonly="readonly"
+  v-model="date"
+>
 <datepicker
   :show="datepicker"
   @close="datepicker = false"
   @date="(datepicker) => {date = datepicker}"  
 />
+```
+
+_vue template_
+
+```javascript
+export default {
+  props: {},
+  data() {
+    return {
+      date: '',
+      datepicker: false,
+    }
+  },
+};
 ```
 
 ## Props
