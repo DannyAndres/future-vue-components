@@ -5,7 +5,10 @@
 ---
 
 <div align="center">
-  <img src="./images/front.png" width="500" alt="Future Components">
+  <div class="d-flex justify-content-center align-items-center">
+    <img src="./images/front.png" width="200" alt="Future Components">
+    <img src="./images/back.png" width="200" alt="Future Components">
+  </div>
   <br>
   <h1>Future Datepicker</h1>
   <p>👌🏻 Simple, futuristic design for components with no effort</p>
