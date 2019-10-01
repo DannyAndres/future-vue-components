@@ -23,7 +23,8 @@ _install moment , animate.css , tailwind_
 ```shell
 npm install --save future-vue-components
 ```
-> ⚠️ **Warning**: due to a bug already issued it to momentjs, other locales as spanish are not available for the moment
+> ⚠️ **Warning**: due to a bug already issued it to momentjs, other locales as spanish are not available for the moment, this error is shown as Can't resolve './locale'
+
 _in case of error when you import css files from tailwind, try the complete route from where the @import is_
 <br>
 _(main.scss file) => /src/assets/scss/main.scss_
