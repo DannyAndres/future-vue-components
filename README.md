@@ -13,7 +13,7 @@
   <h1>Future Datepicker</h1>
   <p>👌🏻 Simple, futuristic design for components with no effort</p>
   <br>
-  <a href="https://www.npmjs.com/package/future-vue-components"><img src="https://img.shields.io/badge/npm-v0.0.2-orange?style=flat-square" alt="npm"></a>
+  <a href="https://www.npmjs.com/package/future-vue-components"><img src="https://img.shields.io/badge/npm-v0.0.14-orange?style=flat-square" alt="npm"></a>
   <img src="https://img.shields.io/badge/vue-v3.11.0-blue?style=flat-square" alt="vue">
 
 </div>
