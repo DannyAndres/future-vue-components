@@ -54,8 +54,6 @@
 <script>
 import './index.js';
 import moment from 'moment';
-// eslint-disable-next-line
-require('moment/locale/es');
 export default {
   props: {
     color: {

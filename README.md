@@ -19,10 +19,11 @@
 </div>
 
 ## Installation
-_install moment, animate.css, tailwind_
+_install moment , animate.css , tailwind_
 ```shell
 npm install --save future-vue-components
 ```
+> ⚠️ **Warning**: due to a bug already issued it to momentjs, other locales as spanish are not available for the moment
 _in case of error when you import css files from tailwind, try the complete route from where the @import is_
 <br>
 _(main.scss file) => /src/assets/scss/main.scss_
@@ -94,6 +95,7 @@ npm run Datepicker
 ## TODO
 
 - Datepicker choose by year
+- Fix .locale moment bug
 
 ## License
 
