@@ -45,7 +45,7 @@ _vue template_
   readonly="readonly"
   v-model="date"
 >
-<datepicker
+<future-datepicker
   :show="datepicker"
   @close="datepicker = false"
   @date="(datepicker) => {date = datepicker}"  
