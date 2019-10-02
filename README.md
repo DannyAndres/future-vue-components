@@ -6,16 +6,13 @@
 
 <div align="center">
   <div class="d-flex justify-content-center align-items-center">
+    <img src="./images/card_back.png" width="200" alt="Future Components">
+    <img src="./images/card_front.png" width="200" alt="Future Components">
     <img src="./images/front.png" width="200" alt="Future Components">
     <img src="./images/back.png" width="200" alt="Future Components">
   </div>
   <br>
   <img src="./images/video.gif" width="1000" alt="Future Components">
-  <br>
-  <div class="d-flex justify-content-center align-items-center">
-    <img src="./images/card_back.png" width="200" alt="Future Components">
-    <img src="./images/card_front.png" width="200" alt="Future Components">
-  </div>
   <br>
   <h1>Future Vue/Tailwind Components</h1>
   <p>👌🏻 Simple, futuristic design for components with no effort</p>
