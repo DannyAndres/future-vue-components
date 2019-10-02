@@ -1,33 +1,29 @@
 <template>
-  <div class="main">
-    <div class="w-64">
-      <input
-        @click="datepicker = true"
-        class="animated fadeIn bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-        type="text"
-        placeholder="fecha"
-        autocomplete="off"
-        spellcheck="false"
-        readonly="readonly"
-        v-model="date"
-      >
-    </div>
-    <datepicker
-      :show="datepicker"
-      @close="datepicker = false"
-      @date="(datepicker) => {date = datepicker}"  
-    />
+  <div class="main bg-gray-200">
+    <Card
+      :user="{
+        avatar_url: 'https://i.pinimg.com/originals/39/ec/15/39ec15a87824a1bdd57484e6a5459593.jpg',
+        name: 'emily rudd'
+      }"
+      :background_url="'https://i.pinimg.com/originals/54/ce/a7/54cea70579cfefc972a4cbf67f92ea59.jpg'"
+    >
+      <span slot="title">This is a title</span>
+      <span>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+      </span>
+    </Card>
   </div>
 </template>
 
 <script>
 import './index.js';
-import datepicker from './Datepicker.vue';
-import moment from 'moment';
-// eslint-disable-next-line
-require('moment/locale/es');
+import Card from './Card.vue';
 export default {
-  props: {},
+  props: {
+    // https://i.pinimg.com/originals/54/ce/a7/54cea70579cfefc972a4cbf67f92ea59.jpg
+    // https://wallpaperaccess.com/full/203545.jpg
+    // https://www.xtrafondos.com/wallpapers/montanas-en-bosque-minimalista-flat-3306.jpg
+  },
   data() {
     return {
       date: '',
@@ -35,7 +31,7 @@ export default {
     }
   },
   components: {
-    datepicker,
+    Card,
   },
   created() {},
   methods: {},
@@ -48,7 +44,6 @@ export default {
 .main {
   height: 100vh;
   width: 100%;
-  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;

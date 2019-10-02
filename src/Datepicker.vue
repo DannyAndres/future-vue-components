@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" id="datepicker-modal" class="animated bg-semi-75 fadeIn fixed inset-0 w-full h-screen antialiased font-sans">
+  <div v-if="show" id="datepicker-modal" class="nunito animated bg-semi-75 fadeIn fixed inset-0 w-full h-screen antialiased font-sans">
     <div class="max-w-6xl mx-auto">
       <div class="flex items-center justify-center min-h-screen">
         <div class="max-w-sm w-full sm:w-1/2 lg:w-1/3 py-6 px-3">
@@ -17,7 +17,7 @@
                   <path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/>
                 </svg>
                 <span @click="day_view = !day_view" class="title cursor-pointer">
-                  <span v-if="day_view">{{ current_month.format }} </span>
+                  <span class="capitalize" v-if="day_view">{{ current_month.format }} </span>
                   <span>{{ current_year.format }}</span>
                 </span>
                 <svg @click="nextMonth()" class="rightArrow -mb-1 cursor-pointer h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -269,5 +269,8 @@ export default {
   }
   .bg-semi-75 {
     background-color: rgba(#1A202C, 0.75) !important;
+  }
+  .nunito {
+    font-family: 'Nunito', sans-serif !important;
   }
 </style>

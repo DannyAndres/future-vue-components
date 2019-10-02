@@ -12,10 +12,15 @@
   <br>
   <img src="./images/video.gif" width="1000" alt="Future Components">
   <br>
-  <h1>Future Datepicker</h1>
+  <div class="d-flex justify-content-center align-items-center">
+    <img src="./images/card_back.png" width="200" alt="Future Components">
+    <img src="./images/card_front.png" width="200" alt="Future Components">
+  </div>
+  <br>
+  <h1>Future Vue/Tailwind Components</h1>
   <p>👌🏻 Simple, futuristic design for components with no effort</p>
   <br>
-  <a href="https://www.npmjs.com/package/future-vue-components"><img src="https://img.shields.io/badge/npm-v0.0.14-orange?style=flat-square" alt="npm"></a>
+  <a href="https://www.npmjs.com/package/future-vue-components"><img src="https://img.shields.io/badge/npm-v0.0.15-orange?style=flat-square" alt="npm"></a>
   <img src="https://img.shields.io/badge/vue-v3.11.0-blue?style=flat-square" alt="vue">
 
 </div>
@@ -40,14 +45,31 @@ _(main.scss file) => /src/assets/scss/main.scss_
 
 ```js
 import Vue from "vue"
-import Datepicker from 'future-vue-components'
 
+import Card from 'future-vue-components'
 Vue.use(Datepicker)
+
+import Datepicker from 'future-vue-components'
+Vue.use(Card)
 ```
 
 _vue template_
 
 ```html
+<!-- Card -->
+<future-card
+  :user="{
+    avatar_url: 'https://i.pinimg.com/originals/39/ec/15/39ec15a87824a1bdd57484e6a5459593.jpg',
+    name: 'emily rudd'
+  }"
+>
+  <span slot="title">This is a title</span>
+  <span>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+  </span>
+</future-card>
+
+<!-- Datepicker -->
 <input
   @click="datepicker = true"
   type="text"
@@ -80,6 +102,8 @@ export default {
 
 ## Props
 
+### Datepicker
+
 | Name              | Type           | Default     | Description                                                                                                                                                                                                                                       | Example                                                                      |
 | ----------------- | -------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | color             | String         | `indigo`    | All colors accepted by Tailwind at https://tailwindcss.com/docs/customizing-colors/#default-color-palette. | `'red'` or `'gray'` |
@@ -87,11 +111,22 @@ export default {
 | show              | Boolean        | `false`     | Whether the datepicker shows itself or not, is used to enable the modal and quit it. | `true` or `false` |
 | background_url    | String         | `https://www.xtrafondos.com/wallpapers/montanas-en-bosque-minimalista-flat-3306.jpg` | Default url for a background image if need it. | - |
 
+### Card
+
+| Name              | Type           | Default     | Description                                                                                                                                                                                                                                       | Example                                                                      |
+| ----------------- | -------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| color             | String         | `gray`      | All colors accepted by Tailwind at https://tailwindcss.com/docs/customizing-colors/#default-color-palette. | `'red'` or `'gray'` |
+| background        | Boolean        | `true`      | Whether the datepicker shows a background image or not. | `true` or `false` |
+| type              | String         | `normal`    | It represents the card style that's shown. | `normal` or `full-image` |
+| user              | Object         | `null`      | User's card data. | `{avatar_url: 'https://i.pinimg.com/originals/39/ec/15/39ec15a87824a1bdd57484e6a5459593.jpg',name: 'emily rudd'}` |
+| badges            | Array          | `[]`        | All the badges that are going to be shown. | `['admin','volunteer']` |
+| background_url    | String         | `https://i.pinimg.com/originals/54/ce/a7/54cea70579cfefc972a4cbf67f92ea59.jpg` | Default url for a background image if need it. | - |
+
 ## Development
 
 ```sh
 npm install
-npm run Datepicker
+npm run Test
 # open localhost:8080
 ```
 

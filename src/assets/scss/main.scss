@@ -3,3 +3,10 @@
 @import "./../../../node_modules/tailwindcss/dist/base.css";
 @import "./../../../node_modules/tailwindcss/dist/components.css";
 @import "./../../../node_modules/tailwindcss/dist/utilities.css";
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif !important;
+}
