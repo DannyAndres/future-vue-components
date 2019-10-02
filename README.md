@@ -1,5 +1,5 @@
 <p align=center>😎😎😎</p>
-<p align=center>Good looking components for Vue.js usign Tailwind css 👉 https://github.com/DannyAndres/future-vue-components</p>
+<p align=center>Good looking components for Vue.js usign Tailwind css 👉 https://danny-aguilar.gitbook.io/future-vue-components/</p>
 <p align=center>🤙🏻🤙🏻🤙🏻</p>
 
 ---
@@ -21,6 +21,10 @@
   <img src="https://img.shields.io/badge/vue-v3.11.0-blue?style=flat-square" alt="vue">
 
 </div>
+
+## Documentation
+
+Go here 👉 https://danny-aguilar.gitbook.io/future-vue-components/
 
 ## Installation
 _install moment , animate.css , tailwind_
