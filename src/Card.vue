@@ -20,6 +20,8 @@
       <div v-if="badges.length != 0" class="px-6 py-4">
         <span v-for="(badge, index) in badges" v-bind:key="index" :class="(badge.length - 1 != index ? 'mr-2 bg-'+color+'-100 text-'+color+'-600' : 'bg-'+color+'-100 text-'+color+'-600')" class="inline-block rounded-full px-3 py-1 text-sm font-semibold">{{ badge }}</span>
       </div>
+      <div v-if="badges.length == 0" class="py-2">
+      </div>
     </div>
     <div v-if="type == 'full-image'" class="bg-cover bg-center" :style="'background-image: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.4)), url('+background_url+')'">
       <div class="pt-2"></div>
@@ -38,6 +40,8 @@
       </div>
       <div v-if="badges.length != 0" class="px-6 py-4">
         <span v-for="(badge, index) in badges" v-bind:key="index" :class="(badge.length - 1 != index ? 'mr-2 bg-'+color+'-100 text-'+color+'-600' : 'bg-'+color+'-100 text-'+color+'-600')" class="inline-block rounded-full px-3 py-1 text-sm font-semibold">{{ badge }}</span>
+      </div>
+      <div v-if="badges.length == 0" class="py-2">
       </div>
     </div>
   </div>
