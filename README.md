@@ -46,10 +46,10 @@ _(main.scss file) => /src/assets/scss/main.scss_
 ```js
 import Vue from "vue"
 
-import Card from 'future-vue-components'
+import Datepicker from 'future-vue-components'
 Vue.use(Datepicker)
 
-import Datepicker from 'future-vue-components'
+import Card from 'future-vue-components'
 Vue.use(Card)
 ```
 
