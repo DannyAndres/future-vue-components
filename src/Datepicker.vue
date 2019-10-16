@@ -40,7 +40,7 @@
             </div>
             <div v-if="day_view && !year_view" class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
               <div class="flex justify-around py-1 text-sm" v-for="(week, week_number) in days_of_month" v-bind:key="week_number">
-                <span @click="chooseDay(day)" :class="(isCurrentDay(day) ? 'bg-'+color+'-400 font-black text-white rounded-lg' : 'font-normal› text-gray-700')" class="p-1 cursor-pointer w-1/12 flex justify-center items-center" v-for="(day, day_number) in week" v-bind:key="day_number">
+                <span @click="chooseDay(day)" :class="(isCurrentDay(day) ? (isBeforeMin(day) ? 'bg-'+color+'-200 font-black  cursor-not-allowed text-white rounded-lg' : 'bg-'+color+'-400 font-black text-white rounded-lg') : (isBeforeMin(day) ? 'font-normal cursor-not-allowed text-gray-400' : 'font-bold text-gray-700'))" class="p-1 cursor-pointer w-1/12 flex justify-center items-center" v-for="(day, day_number) in week" v-bind:key="day_number">
                   {{ day }}
                 </span>
               </div>
@@ -93,6 +93,10 @@ export default {
     background: {
       type: Boolean,
       default: true
+    },
+    minDate: {
+      type: String,
+      default: null
     },
     show: {
       type: Boolean,
@@ -147,6 +151,14 @@ export default {
     this.year_view_array = chunk(this.year_view_array,4);
   },
   methods: {
+    isBeforeMin(day) {
+      if(this.minDate && moment(this.minDate, 'YYYY-MM-DD')) {
+        var date = moment(this.current_year.format + '-' + this.current_month.format + '-' + day, 'YYYY-MMMM-DD');
+        return date.isBefore(moment(this.minDate, 'YYYY-MM-DD'));
+      } else {
+        return true;
+      }
+    },
     close(time) {
       function animateCSS(element, animationName, callback) {
           const node = document.querySelector(element)
@@ -286,11 +298,15 @@ export default {
       this.day_view = false;
     },
     chooseDay(day) {
-      var long_day = ((day).toString().length == 1 ? '0'+(day) : (day).toString());
-      var moment_date = moment(this.current_year.format+'-'+this.current_month.moment.format('MM')+'-'+long_day);
-      this.today = moment(this.today.format('YYYY-')+moment_date.format('MM-DD'),'YYYY-MM-DD');
-      document.getElementById('datepicker-modal').classList.add('fadeOut');
-      this.close();
+      if(this.isBeforeMin(day)) {
+        //
+      } else {
+        var long_day = ((day).toString().length == 1 ? '0'+(day) : (day).toString());
+        var moment_date = moment(this.current_year.format+'-'+this.current_month.moment.format('MM')+'-'+long_day);
+        this.today = moment(this.today.format('YYYY-')+moment_date.format('MM-DD'),'YYYY-MM-DD');
+        document.getElementById('datepicker-modal').classList.add('fadeOut');
+        this.close();
+      }
     },
   },
   watch: {

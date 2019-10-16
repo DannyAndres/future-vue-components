@@ -1,6 +1,7 @@
 <template>
   <div class="main bg-gray-200">
     <Datepicker
+      :minDate="'2019-10-19'"
       :show="true"
       :background="false"
       @close="datepicker = false"
