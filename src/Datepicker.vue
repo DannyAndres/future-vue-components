@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" id="datepicker-modal" class="nunito animated bg-semi-75 fadeIn fixed inset-0 w-full h-screen antialiased font-sans">
+  <div v-if="show" id="datepicker-modal" class="z-50 nunito animated bg-semi-75 fadeIn fixed inset-0 w-full h-screen antialiased font-sans">
     <div class="max-w-6xl mx-auto">
       <div class="flex items-center justify-center min-h-screen">
         <div class="max-w-sm w-full sm:w-1/2 lg:w-1/3 py-6 px-3">
@@ -13,34 +13,49 @@
             </div>
             <div class="p-4">
               <p class="uppercase tracking-wide flex flex-row w-full justify-between items-center text-sm font-bold text-gray-700">
-                <svg @click="previousMonth()" class="leftArrow -mb-1 cursor-pointer h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <svg @click="previousMonth()" v-if="!year_view" class="leftArrow -mb-1 cursor-pointer h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/>
+                </svg>
+                <svg @click="previousYears()" v-if="year_view" class="leftArrow -mb-1 cursor-pointer h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/>
                 </svg>
                 <span @click="day_view = !day_view" class="title cursor-pointer">
-                  <span class="capitalize" v-if="day_view">{{ current_month.format }} </span>
-                  <span>{{ current_year.format }}</span>
+                  <span class="capitalize" v-if="day_view && !year_view">{{ current_month.format }} </span>
+                  <span @click="changeToYearView()" v-if="!year_view">{{ current_year.format }}</span>
+                  <span class="capitalize cursor-default" v-if="year_view">{{ year_view_top.format }} / </span>
+                  <span class="cursor-default" v-if="year_view">{{ year_view_end.format }}</span>
                 </span>
-                <svg @click="nextMonth()" class="rightArrow -mb-1 cursor-pointer h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <svg @click="nextMonth()" v-if="!year_view" class="rightArrow -mb-1 cursor-pointer h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/>
+                </svg>
+                <svg @click="nextYears()" v-if="year_view" class="rightArrow -mb-1 cursor-pointer h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/>
                 </svg>
               </p>
             </div>
-            <div v-if="day_view" class="flex justify-around p-4 border-t border-gray-300 text-gray-500">
+            <div v-if="day_view && !year_view" class="flex justify-around p-4 border-t border-gray-300 text-gray-500">
               <span class="font-light w-1/12 flex justify-center items-center" v-for="(day, day_number) in days_of_week" v-bind:key="day_number">
                 {{ day }}
               </span>
             </div>
-            <div v-if="day_view" class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+            <div v-if="day_view && !year_view" class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
               <div class="flex justify-around py-1 text-sm" v-for="(week, week_number) in days_of_month" v-bind:key="week_number">
                 <span @click="chooseDay(day)" :class="(isCurrentDay(day) ? 'bg-'+color+'-400 font-black text-white rounded-lg' : 'font-normal› text-gray-700')" class="p-1 cursor-pointer w-1/12 flex justify-center items-center" v-for="(day, day_number) in week" v-bind:key="day_number">
                   {{ day }}
                 </span>
               </div>
             </div>
-            <div v-if="!day_view" class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+            <div v-if="!day_view && !year_view" class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
               <div class="flex justify-around py-2 text-sm" v-for="(month_by_four, months_number) in months_of_year" v-bind:key="months_number">
                 <span @click="chooseMonth((month_by_four_number+1)+(months_number*4))" :class="(isCurrentMonth((month_by_four_number+1)+(months_number*4)) ? 'text-'+color+'-600 font-black rounded-lg' : 'font-normal text-gray-700')" class="w-1/12 cursor-pointer flex justify-center items-center" v-for="(month, month_by_four_number) in month_by_four" v-bind:key="month_by_four_number">
                   {{ month }}
+                </span>
+              </div>
+            </div>
+            <div v-if="year_view" class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+              <div class="flex justify-around py-2 text-sm" v-for="(year_by_four, years_number) in year_view_array" v-bind:key="years_number">
+                <span @click="chooseYear(year)" :class="(isCurrentYear(year) ? 'text-'+color+'-600 font-black rounded-lg' : 'font-normal text-gray-700')" class="w-1/12 cursor-pointer flex justify-center items-center" v-for="(year, year_by_four_number) in year_by_four" v-bind:key="year_by_four_number">
+                  {{ year }}
                 </span>
               </div>
             </div>
@@ -91,6 +106,16 @@ export default {
   data() {
     return {
       day_view: true,
+      year_view: false,
+      year_view_top: {
+        format: moment().subtract(5,'year').format('YYYY'),
+        moment: moment().subtract(5,'year')
+      },
+      year_view_end: {
+        format: moment().add(6,'year').format('YYYY'),
+        moment: moment().add(6,'year')
+      },
+      year_view_array: [],
       today: moment(),
       current_month: {
         format: moment().format('MMMM'),
@@ -112,6 +137,14 @@ export default {
     }
   },
   created() {
+    const chunk = (arr, size) =>
+        Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+          arr.slice(i * size, i * size + size)
+      );
+    for (let i = parseInt(this.year_view_top.format); i <= parseInt(this.year_view_end.format); i++) {
+      this.year_view_array.push(i);
+    }
+    this.year_view_array = chunk(this.year_view_array,4);
   },
   methods: {
     close(time) {
@@ -140,6 +173,68 @@ export default {
           });
         }, 300);
       }
+    },
+    previousYears() {
+      var tempTop = this.year_view_top.format;
+      var tempEnd = this.year_view_end.format;
+      this.year_view_top = {
+        format: this.year_view_top.moment.subtract(12,'year').format('YYYY'),
+        moment: this.year_view_top.moment.subtract(12,'year')
+      };
+      this.year_view_end = {
+        format: this.year_view_end.moment.subtract(12,'year').format('YYYY'),
+        moment: this.year_view_end.moment.subtract(12,'year')
+      };
+      if(this.year_view_top.format == tempTop && this.year_view_end.format == tempEnd) {
+        this.year_view_top = {
+          format: this.year_view_top.moment.subtract(12,'year').format('YYYY'),
+          moment: this.year_view_top.moment.subtract(12,'year')
+        };
+        this.year_view_end = {
+          format: this.year_view_end.moment.subtract(12,'year').format('YYYY'),
+          moment: this.year_view_end.moment.subtract(12,'year')
+        };
+      }
+      this.year_view_array = [];
+      const chunk = (arr, size) =>
+          Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+            arr.slice(i * size, i * size + size)
+        );
+      for (let i = parseInt(this.year_view_top.format); i <= parseInt(this.year_view_end.format); i++) {
+        this.year_view_array.push(i);
+      }
+      this.year_view_array = chunk(this.year_view_array,4);
+    },
+    nextYears() {
+      var tempTop = this.year_view_top.format;
+      var tempEnd = this.year_view_end.format;
+      this.year_view_top = {
+        format: this.year_view_top.moment.add(12,'year').format('YYYY'),
+        moment: this.year_view_top.moment.add(12,'year')
+      };
+      this.year_view_end = {
+        format: this.year_view_end.moment.add(12,'year').format('YYYY'),
+        moment: this.year_view_end.moment.add(12,'year')
+      };
+      if(this.year_view_top.format == tempTop && this.year_view_end.format == tempEnd) {
+        this.year_view_top = {
+          format: this.year_view_top.moment.add(12,'year').format('YYYY'),
+          moment: this.year_view_top.moment.add(12,'year')
+        };
+        this.year_view_end = {
+          format: this.year_view_end.moment.add(12,'year').format('YYYY'),
+          moment: this.year_view_end.moment.add(12,'year')
+        };
+      }
+      this.year_view_array = [];
+      const chunk = (arr, size) =>
+          Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+            arr.slice(i * size, i * size + size)
+        );
+      for (let i = parseInt(this.year_view_top.format); i <= parseInt(this.year_view_end.format); i++) {
+        this.year_view_array.push(i);
+      }
+      this.year_view_array = chunk(this.year_view_array,4);
     },
     nextMonth() {
       if(this.day_view) {
@@ -175,6 +270,11 @@ export default {
         }
       }
     },
+    changeToYearView() {
+      if(!this.day_view) {
+        this.year_view = true;
+      }
+    },
     isCurrentDay(day) {
       if(day != ' ') {
         var long_day = ((day).toString().length == 1 ? '0'+(day) : (day).toString());
@@ -183,6 +283,9 @@ export default {
       } else {
         return false;
       }
+    },
+    isCurrentYear(year) {
+      return parseInt(this.today.format('YYYY')) == year;
     },
     isCurrentMonth(month) {
       return parseInt(this.current_month.moment.format('MM')) == month;
@@ -196,10 +299,20 @@ export default {
       }
       this.day_view = !this.day_view;
     },
+    chooseYear(year) {
+      this.today = moment(year + '-' + this.today.format('MM-DD'),'YYYY-MM-DD');
+      this.current_year = {
+        format: this.today.format('YYYY'),
+        moment: this.today
+      };
+      // activate month view 
+      this.year_view = false;
+      this.day_view = false;
+    },
     chooseDay(day) {
       var long_day = ((day).toString().length == 1 ? '0'+(day) : (day).toString());
       var moment_date = moment(this.current_year.format+'-'+this.current_month.moment.format('MM')+'-'+long_day);
-      this.today = moment_date;
+      this.today = moment(this.today.format('YYYY-')+moment_date.format('MM-DD'),'YYYY-MM-DD');
       document.getElementById('datepicker-modal').classList.add('fadeOut');
       this.close();
     },

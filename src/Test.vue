@@ -1,23 +1,18 @@
 <template>
   <div class="main bg-gray-200">
-    <Card
-      :user="{
-        avatar_url: 'https://i.pinimg.com/originals/39/ec/15/39ec15a87824a1bdd57484e6a5459593.jpg',
-        name: 'emily rudd'
-      }"
-      :background_url="'https://i.pinimg.com/originals/54/ce/a7/54cea70579cfefc972a4cbf67f92ea59.jpg'"
-    >
-      <span slot="title">This is a title</span>
-      <span>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-      </span>
-    </Card>
+    <Datepicker
+      :show="true"
+      :background="false"
+      @close="datepicker = false"
+      @date="(datepicker) => {date = datepicker}"
+      class="z-50"
+    />
   </div>
 </template>
 
 <script>
 import './index.js';
-import Card from './Card.vue';
+import Datepicker from './Datepicker.vue';
 export default {
   props: {
     // https://i.pinimg.com/originals/54/ce/a7/54cea70579cfefc972a4cbf67f92ea59.jpg
@@ -31,7 +26,7 @@ export default {
     }
   },
   components: {
-    Card,
+    Datepicker,
   },
   created() {},
   methods: {},

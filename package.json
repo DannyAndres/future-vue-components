@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "future-vue-components",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Good looking components for vue js",
   "main": "./dist/index.js",
   "scripts": {
