@@ -176,12 +176,12 @@ export default {
     },
     previousYears() {
       this.year_view_end = {
-        format: this.year_view_top.moment.subtract(1,'year').format('YYYY'),
-        moment: this.year_view_top.moment.subtract(1,'year')
+        format: this.year_view_top.moment.clone().subtract(1,'year').format('YYYY'),
+        moment: this.year_view_top.moment.clone().subtract(1,'year')
       };
       this.year_view_top = {
-        format: this.year_view_end.moment.subtract(11,'year').format('YYYY'),
-        moment: this.year_view_end.moment.subtract(11,'year')
+        format: this.year_view_end.moment.clone().subtract(11,'year').format('YYYY'),
+        moment: this.year_view_end.moment.clone().subtract(11,'year')
       };
       this.year_view_array = [];
       const chunk = (arr, size) =>
@@ -195,12 +195,12 @@ export default {
     },
     nextYears() {
       this.year_view_top = {
-        format: this.year_view_end.moment.add(1,'year').format('YYYY'),
-        moment: this.year_view_end.moment.add(1,'year')
+        format: this.year_view_end.moment.clone().add(1,'year').format('YYYY'),
+        moment: this.year_view_end.moment.clone().add(1,'year')
       };
       this.year_view_end = {
-        format: this.year_view_top.moment.add(11,'year').format('YYYY'),
-        moment: this.year_view_top.moment.add(11,'year')
+        format: this.year_view_top.moment.clone().add(11,'year').format('YYYY'),
+        moment: this.year_view_top.moment.clone().add(11,'year')
       };
       this.year_view_array = [];
       const chunk = (arr, size) =>
