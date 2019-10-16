@@ -156,7 +156,7 @@ export default {
         var date = moment(this.current_year.format + '-' + this.current_month.format + '-' + day, 'YYYY-MMMM-DD');
         return date.isBefore(moment(this.minDate, 'YYYY-MM-DD'));
       } else {
-        return true;
+        return false;
       }
     },
     close(time) {
