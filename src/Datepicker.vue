@@ -185,16 +185,16 @@ export default {
         format: this.year_view_end.moment.subtract(12,'year').format('YYYY'),
         moment: this.year_view_end.moment.subtract(12,'year')
       };
-      if(this.year_view_top.format == tempTop && this.year_view_end.format == tempEnd) {
-        this.year_view_top = {
-          format: this.year_view_top.moment.subtract(12,'year').format('YYYY'),
-          moment: this.year_view_top.moment.subtract(12,'year')
-        };
-        this.year_view_end = {
-          format: this.year_view_end.moment.subtract(12,'year').format('YYYY'),
-          moment: this.year_view_end.moment.subtract(12,'year')
-        };
-      }
+      // if(this.year_view_top.format == tempTop && this.year_view_end.format == tempEnd) {
+      //   this.year_view_top = {
+      //     format: this.year_view_top.moment.subtract(12,'year').format('YYYY'),
+      //     moment: this.year_view_top.moment.subtract(12,'year')
+      //   };
+      //   this.year_view_end = {
+      //     format: this.year_view_end.moment.subtract(12,'year').format('YYYY'),
+      //     moment: this.year_view_end.moment.subtract(12,'year')
+      //   };
+      // }
       this.year_view_array = [];
       const chunk = (arr, size) =>
           Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
@@ -216,16 +216,16 @@ export default {
         format: this.year_view_end.moment.add(12,'year').format('YYYY'),
         moment: this.year_view_end.moment.add(12,'year')
       };
-      if(this.year_view_top.format == tempTop && this.year_view_end.format == tempEnd) {
-        this.year_view_top = {
-          format: this.year_view_top.moment.add(12,'year').format('YYYY'),
-          moment: this.year_view_top.moment.add(12,'year')
-        };
-        this.year_view_end = {
-          format: this.year_view_end.moment.add(12,'year').format('YYYY'),
-          moment: this.year_view_end.moment.add(12,'year')
-        };
-      }
+      // if(this.year_view_top.format == tempTop && this.year_view_end.format == tempEnd) {
+      //   this.year_view_top = {
+      //     format: this.year_view_top.moment.add(12,'year').format('YYYY'),
+      //     moment: this.year_view_top.moment.add(12,'year')
+      //   };
+      //   this.year_view_end = {
+      //     format: this.year_view_end.moment.add(12,'year').format('YYYY'),
+      //     moment: this.year_view_end.moment.add(12,'year')
+      //   };
+      // }
       this.year_view_array = [];
       const chunk = (arr, size) =>
           Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
